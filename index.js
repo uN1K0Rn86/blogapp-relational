@@ -10,6 +10,10 @@ app.use(express.json())
 
 app.use('/api/blogs', blogsRouter)
 
+const { errorHandler } = require('./utils/middleware')
+
+app.use(errorHandler)
+
 const start = async () => {
   await connectToDb()
   app.listen(PORT, () => {
