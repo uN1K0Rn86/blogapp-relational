@@ -2,7 +2,7 @@ require('dotenv').config()
 
 const Blog = require('./models/blog')
 
-const sequelize = require('./db')
+const sequelize = require('./utils/db')
 
 const main = async () => {
   try {
