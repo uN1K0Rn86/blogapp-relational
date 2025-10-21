@@ -5,7 +5,6 @@ const tokenExtractor = (req, res, next) => {
   const authorization = req.get('authorization')
   if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
     try {
-      console.log(authorization.substring(7))
       req.decodedToken = jwt.verify(authorization.substring(7), SECRET)
     } catch (error) {
       console.log(error)
@@ -28,6 +27,9 @@ const errorHandler = (error, req, res, next) => {
     return res.status(500).json({ error: error.message })
   }
   if (error.message === 'Request must include number of likes') {
+    return res.status(400).json({ error: error.message })
+  }
+  if (error.message === 'Blog can only be deleted by owner') {
     return res.status(400).json({ error: error.message })
   }
 

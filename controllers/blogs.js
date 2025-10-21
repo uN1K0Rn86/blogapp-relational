@@ -18,8 +18,15 @@ router.post('/', tokenExtractor, async (req, res, next) => {
   }
 })
 
-router.delete('/:id', async (req, res) => {
-  const blogToDelete = Blog.findByPk(req.params.id)
+router.delete('/:id', tokenExtractor, async (req, res) => {
+  const blogToDelete = await Blog.findByPk(req.params.id)
+  const blogOwnerId = blogToDelete.userId
+  const loggedUserId = req.decodedToken.id
+
+  if (!(blogOwnerId === loggedUserId)) {
+    throw new Error('Blog can only be deleted by owner')
+  }
+
   if (blogToDelete) {
     await Blog.destroy({
       where: {
