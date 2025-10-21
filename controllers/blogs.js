@@ -8,9 +8,10 @@ router.get('/', async (req, res) => {
   const where = {}
 
   if (req.query.search) {
-    where.title = {
-      [Op.iRegexp]: req.query.search,
-    }
+    where[Op.or] = [
+      { title: { [Op.iRegexp]: req.query.search } },
+      { author: { [Op.iRegexp]: req.query.search } },
+    ]
   }
 
   const blogs = await Blog.findAll({
