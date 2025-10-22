@@ -18,7 +18,8 @@
   "scripts": {
     "test": "test",
     "dev": "nodemon index.js",
-    "seed": "node utils/seed.js"
+    "seed": "node utils/seed.js",
+    "migration:down": "node utils/rollback.js"
   },
   "author": "Sami Heinimo",
   "license": "ISC"

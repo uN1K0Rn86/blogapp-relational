@@ -6,10 +6,6 @@ const seed = async () => {
   await connectToDb()
   console.log('Connected to database')
 
-  // Clear old data (optional for clean seeds)
-  // await Blog.destroy({ where: {} })
-  // await User.destroy({ where: {} })
-
   const usersData = [
     {
       name: 'Anomander Rake',
@@ -21,12 +17,14 @@ const seed = async () => {
           author: 'Anomander Rake',
           url: 'https://moonspawn.org/reflections',
           likes: 1200,
+          year: 2001,
         },
         {
           title: 'The Weight of Leadership',
           author: 'Anomander Rake',
           url: 'https://moonspawn.org/leadership',
           likes: 800,
+          year: 2010,
         },
       ],
     },
@@ -40,18 +38,21 @@ const seed = async () => {
           author: 'Karsa Orlong',
           url: 'https://toblakai.com/strength',
           likes: 500,
+          year: 1995,
         },
         {
           title: 'Civilization is a Lie',
           author: 'Karsa Orlong',
           url: 'https://toblakai.com/civilization',
           likes: 650,
+          year: 2005,
         },
         {
           title: 'Journey of a Toblakai',
           author: 'Karsa Orlong',
           url: 'https://toblakai.com/journey',
           likes: 720,
+          year: 2012,
         },
       ],
     },
@@ -65,12 +66,14 @@ const seed = async () => {
           author: 'Quick Ben',
           url: 'https://bridgeburners.net/sorcery',
           likes: 900,
+          year: 2000,
         },
         {
           title: 'Deceit and Survival',
           author: 'Quick Ben',
           url: 'https://bridgeburners.net/deceit',
           likes: 430,
+          year: 2015,
         },
       ],
     },
@@ -84,12 +87,14 @@ const seed = async () => {
           author: 'Fiddler',
           url: 'https://bridgeburners.net/music',
           likes: 300,
+          year: 1998,
         },
         {
           title: 'Tales from the Marches',
           author: 'Fiddler',
           url: 'https://bridgeburners.net/marches',
           likes: 270,
+          year: 2008,
         },
       ],
     },
@@ -103,12 +108,14 @@ const seed = async () => {
           author: 'Icarium Lifestealer',
           url: 'https://jhag.org/fragments',
           likes: 1100,
+          year: 1991,
         },
         {
           title: 'The Weight of Time',
           author: 'Icarium Lifestealer',
           url: 'https://jhag.org/time',
           likes: 950,
+          year: 2020,
         },
       ],
     },
