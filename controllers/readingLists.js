@@ -1,5 +1,7 @@
 const router = require('express').Router()
 
+const { tokenExtractor } = require('../utils/middleware')
+
 const ReadingLists = require('../models/readingLists')
 
 router.post('/', async (req, res) => {
@@ -9,6 +11,24 @@ router.post('/', async (req, res) => {
     blogId,
   })
   res.json(addedList)
+})
+
+router.put('/:id', tokenExtractor, async (req, res, next) => {
+  const readingList = await ReadingLists.findByPk(req.params.id)
+
+  if (!req.decodedToken.id || req.decodedToken.id !== readingList.userId) {
+    throw new Error('Cannot mark another users blog')
+  }
+
+  console.log(readingList)
+  console.log(req.body)
+  try {
+    readingList.unread = req.body.unread
+    await readingList.save()
+    res.status(200).json(readingList)
+  } catch (error) {
+    next(error)
+  }
 })
 
 module.exports = router

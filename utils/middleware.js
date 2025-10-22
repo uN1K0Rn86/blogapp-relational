@@ -32,6 +32,9 @@ const errorHandler = (error, req, res, next) => {
   if (error.message === 'Blog can only be deleted by owner') {
     return res.status(400).json({ error: error.message })
   }
+  if (error.message === 'Cannot mark another users blog') {
+    return res.status(403).json({ error: error.message })
+  }
 
   next(error)
 }
