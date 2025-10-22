@@ -3,6 +3,7 @@ const { Op } = require('sequelize')
 
 const { tokenExtractor } = require('../utils/middleware')
 const { Blog, User } = require('../models')
+const { sequelize } = require('../utils/db')
 
 router.get('/', async (req, res) => {
   const where = {}
@@ -22,6 +23,7 @@ router.get('/', async (req, res) => {
       model: User,
       attributes: ['name', 'username'],
     },
+    order: [['likes', 'DESC']],
     where,
   })
   res.json(blogs)
