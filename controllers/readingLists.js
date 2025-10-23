@@ -20,10 +20,8 @@ router.put('/:id', tokenExtractor, async (req, res, next) => {
     throw new Error('Cannot mark another users blog')
   }
 
-  console.log(readingList)
-  console.log(req.body)
   try {
-    readingList.unread = req.body.unread
+    readingList.read = req.body.read
     await readingList.save()
     res.status(200).json(readingList)
   } catch (error) {

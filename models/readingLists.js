@@ -21,9 +21,9 @@ ReadingLists.init(
       allowNull: false,
       references: { model: 'blogs', key: 'id' },
     },
-    unread: {
+    read: {
       type: DataTypes.BOOLEAN,
-      defaultValue: true,
+      defaultValue: false,
     },
   },
   {
